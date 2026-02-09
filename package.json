@@ -1,0 +1,30 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend Sistem Absen Magang",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js",
+    "test": "echo \"No test specified\""
+  },
+  "keywords": [
+    "absensi",
+    "backend",
+    "express",
+    "supabase"
+  ],
+  "author": "Wahyu",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.5",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.18.0",
+    "postgres": "^3.4.8"
+  }
+}
