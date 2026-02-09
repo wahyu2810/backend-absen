@@ -26,11 +26,15 @@ app.get("/", (req, res) => {
   res.send("API Absensi Magang Aktif");
 });
 
+app.get("/api", (req, res) => {
+  res.send("API aktif");
+});
+
 /* ================================
    Jalankan server
 ================================ */
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () =>
-  console.log(`Server berjalan di port ${PORT}`)
-);
+app.listen(PORT, () => {
+  console.log(`Server berjalan di port ${PORT}`);
+});
