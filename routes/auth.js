@@ -12,34 +12,19 @@ router.post("/register", async (req, res) => {
   try {
     const { nama, email, password } = req.body;
 
-    // Validasi input
     if (!nama || !email || !password) {
       return res.status(400).json({
         error: "Nama, email, dan password wajib diisi",
       });
     }
 
-    // Cek apakah email sudah terdaftar
-    const check = await pool.query(
-      "SELECT id FROM users WHERE email=$1",
-      [email]
-    );
-
-    if (check.rows.length > 0) {
-      return res.status(409).json({
-        error: "Email sudah terdaftar",
-      });
-    }
-
-    // Hash password
     const hash = await bcrypt.hash(password, 10);
 
-    // Simpan ke database
     const result = await pool.query(
-      `INSERT INTO users(nama,email,password)
-       VALUES($1,$2,$3)
+      `INSERT INTO users(nama,email,password,role)
+       VALUES($1,$2,$3,$4)
        RETURNING id,nama,email,role`,
-      [nama, email, hash]
+      [nama, email, hash, "peserta"]
     );
 
     res.json(result.rows[0]);
